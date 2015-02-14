@@ -3,13 +3,13 @@ timestamp input
 
 ### install
 
-```shell
+```console
 go get github.com/ma6174/ts
 ```
 
-### test
+### example
 
-```shell
+```console
 $ cat ./example/test.sh
 #!/bin/bash
 echo "start"
