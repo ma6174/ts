@@ -15,6 +15,7 @@ var (
 	layout        = "2006/01/02-15:04:05.000000"
 	flagFromStart = flag.Bool("s", false, "calc time from start")
 	flagFromLast  = flag.Bool("i", false, "calc time from last line")
+	isShowDoc     = flag.Bool("h", false, "show help")
 	lastTime      = time.Now()
 	T             = map[rune]int64{
 		's': 1e9,
@@ -23,6 +24,22 @@ var (
 		'd': 1e9 * 60 * 60 * 24,
 	}
 )
+
+const doc = `
+NAME
+       ts - timestamp input
+
+SYNOPSIS
+       ts [-i | -s] [format]
+
+DESCRIPTION
+       ts adds a timestamp to the beginning of each line of input.
+
+       The optional format parameter controls how the timestamp is formatted, as used by go time format. The default format is "2006/01/02-15:04:05.000000". 
+
+       If the -i or -s switch is passed, ts timestamps incrementally instead. In case of -i, every timestamp will be the time elapsed since the last timestamp.
+       In case of -s, the time elapsed since start of the program is used.  The default format changes to "{ts}", it will show time used like "1d20h30m40.555555s".
+`
 
 func calcTime(cost int64) (ret string) {
 	for _, r := range "dhm" {
@@ -52,6 +69,10 @@ func doFormat(line string) {
 
 func main() {
 	flag.Parse()
+	if *isShowDoc {
+		fmt.Println(doc)
+		return
+	}
 	if *flagFromStart || *flagFromLast {
 		layout = "{ts}"
 	}
