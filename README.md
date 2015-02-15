@@ -29,7 +29,6 @@ $ ./example/test.sh | ts -s
 0.000022s start
 1.005838s after sleep 1s
 1.508020s done
-$
 ```
 
 ### something interesting
