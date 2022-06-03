@@ -38,8 +38,7 @@ DESCRIPTION
        The optional format parameter controls how the timestamp is formatted, as used by go time format. The default format is "2006/01/02-15:04:05.000000". 
 
        If the -i or -s switch is passed, ts timestamps incrementally instead. In case of -i, every timestamp will be the time elapsed since the last timestamp.
-       In case of -s, the time elapsed since start of the program is used.  The default format changes to "{ts}", it will show time used like "1d20h30m40.555555s".
-`
+       In case of -s, the time elapsed since start of the program is used.  The default format changes to "{ts}", it will show time used like "1d20h30m40.555555s".`
 
 func calcTime(cost int64) (ret string) {
 	for _, r := range "dhm" {
